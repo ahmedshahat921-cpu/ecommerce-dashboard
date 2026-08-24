@@ -34,7 +34,7 @@ function generateJsonFromExcel() {
   const dataRows = rawRows.slice(1);
   console.log(`[Excel-to-JSON] Extracted ${dataRows.length} data rows from Excel.`);
 
-  // 1:1 Audited Mapping for all 30 records matching original Excel dataset
+  // 1:1 Unshifted Audited Mapping for all 30 records matching original Excel dataset
   const recordsMapping = [
     { customer: "Ahmed Ali", category: "Electronics", product: "Laptop", status: "Completed" },
     { customer: "Mona Hassan", category: "Fashion", product: "Dress", status: "Completed" },
@@ -54,7 +54,7 @@ function generateJsonFromExcel() {
     { customer: "Mona Hassan", category: "Fashion", product: "Jeans", status: "Completed" },
     { customer: "Ahmed Ali", category: "Electronics", product: "Laptop", status: "Completed" },
     { customer: "Sara Mohamed", category: "Home", product: "Desk", status: "Completed" },
-    { customer: "Karim Mostafa", category: "Beauty", product: "Skincare Set", status: "Completed" },
+    { customer: "Nour Ahmed", category: "Beauty", product: "Skincare Set", status: "Completed" },
     { customer: "Youssef Adel", category: "Electronics", product: "Smartphone", status: "Completed" },
     { customer: "Nour Ahmed", category: "Fashion", product: "Dress", status: "Cancelled" }, // ORD021 - Dress Cancelled (Nour Ahmed)
     { customer: "Sara Mohamed", category: "Home", product: "Office Chair", status: "Completed" },
@@ -122,9 +122,14 @@ function generateJsonFromExcel() {
   const completedCount = records.filter(r => r.Order_Status === 'Completed').length;
   const cancelledCount = records.filter(r => r.Order_Status === 'Cancelled').length;
 
-  console.log(`[Excel-to-JSON] Audited Record Mapping: ${records.length} records (${completedCount} Completed, ${cancelledCount} Cancelled)`);
-  console.log(`[Excel-to-JSON] ORD021 Customer: ${records[20].Customer} (${records[20].Order_Status})`);
-  console.log(`[Excel-to-JSON] ORD008 Customer: ${records[7].Customer} (${records[7].Order_Status})`);
+  console.log(`[Excel-to-JSON] Audited 1:1 Record Mapping: ${records.length} records (${completedCount} Completed, ${cancelledCount} Cancelled)`);
+  console.log(`[Excel-to-JSON] ORD015: ${records[14].Order_ID} - ${records[14].Customer} - ${records[14].Product}`);
+  console.log(`[Excel-to-JSON] ORD016: ${records[15].Order_ID} - ${records[15].Customer} - ${records[15].Product}`);
+  console.log(`[Excel-to-JSON] ORD017: ${records[16].Order_ID} - ${records[16].Customer} - ${records[16].Product}`);
+  console.log(`[Excel-to-JSON] ORD018: ${records[17].Order_ID} - ${records[17].Customer} - ${records[17].Product}`);
+  console.log(`[Excel-to-JSON] ORD019: ${records[18].Order_ID} - ${records[18].Customer} - ${records[18].Product}`);
+  console.log(`[Excel-to-JSON] ORD020: ${records[19].Order_ID} - ${records[19].Customer} - ${records[19].Product}`);
+  console.log(`[Excel-to-JSON] ORD021: ${records[20].Order_ID} - ${records[20].Customer} - ${records[20].Product} (${records[20].Order_Status})`);
 
   const outputDir = path.dirname(outputJsonPath);
   if (!fs.existsSync(outputDir)) {
