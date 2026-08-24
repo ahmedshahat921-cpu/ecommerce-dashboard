@@ -190,7 +190,7 @@
     "Quantity": 2,
     "Unit_Price": 5500,
     "Total_Sales": 11000,
-    "Payment_Method": "Wallet",
+    "Payment_Method": "Credit Card",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -203,7 +203,7 @@
     "Quantity": 3,
     "Unit_Price": 1000,
     "Total_Sales": 3000,
-    "Payment_Method": "Credit Card",
+    "Payment_Method": "Cash",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -216,7 +216,7 @@
     "Quantity": 1,
     "Unit_Price": 25000,
     "Total_Sales": 25000,
-    "Payment_Method": "Cash",
+    "Payment_Method": "Wallet",
     "Order_Status": "Completed",
     "City": "Giza"
   },
@@ -229,7 +229,7 @@
     "Quantity": 1,
     "Unit_Price": 6000,
     "Total_Sales": 6000,
-    "Payment_Method": "Wallet",
+    "Payment_Method": "Credit Card",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -242,7 +242,7 @@
     "Quantity": 2,
     "Unit_Price": 800,
     "Total_Sales": 1600,
-    "Payment_Method": "Credit Card",
+    "Payment_Method": "Cash",
     "Order_Status": "Completed",
     "City": "Alexandria"
   },
@@ -255,7 +255,7 @@
     "Quantity": 2,
     "Unit_Price": 18000,
     "Total_Sales": 36000,
-    "Payment_Method": "Cash",
+    "Payment_Method": "Credit Card",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -281,7 +281,7 @@
     "Quantity": 2,
     "Unit_Price": 4500,
     "Total_Sales": 9000,
-    "Payment_Method": "Credit Card",
+    "Payment_Method": "Cash",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -294,7 +294,7 @@
     "Quantity": 2,
     "Unit_Price": 2500,
     "Total_Sales": 5000,
-    "Payment_Method": "Cash",
+    "Payment_Method": "Credit Card",
     "Order_Status": "Completed",
     "City": "Alexandria"
   },
@@ -320,7 +320,7 @@
     "Quantity": 1,
     "Unit_Price": 3500,
     "Total_Sales": 3500,
-    "Payment_Method": "Credit Card",
+    "Payment_Method": "Cash",
     "Order_Status": "Completed",
     "City": "Cairo"
   },
@@ -333,7 +333,7 @@
     "Quantity": 1,
     "Unit_Price": 2200,
     "Total_Sales": 2200,
-    "Payment_Method": "Cash",
+    "Payment_Method": "Credit Card",
     "Order_Status": "Completed",
     "City": "Alexandria"
   },
