@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { CustomSelect } from '../CustomSelect/CustomSelect';
 
 export const Pagination = ({
   currentPage,
@@ -23,23 +24,19 @@ export const Pagination = ({
         </span>
 
         <div className="flex items-center gap-1.5 border-l border-slate-200 dark:border-slate-800 pl-4">
-          <label htmlFor="page-size-select" className="text-[11px] font-medium">
+          <label htmlFor="page-size-select" className="text-[11px] font-medium shrink-0">
             Rows per page:
           </label>
-          <select
+          <CustomSelect
             id="page-size-select"
             value={pageSize}
-            onChange={(e) => {
-              setPageSize(Number(e.target.value));
+            onChange={(val) => {
+              setPageSize(Number(val));
               setCurrentPage(1);
             }}
-            className="px-2 py-1 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
-          >
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-          </select>
+            options={[5, 10, 20, 50]}
+            className="w-18"
+          />
         </div>
       </div>
 

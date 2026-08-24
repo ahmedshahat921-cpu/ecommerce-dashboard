@@ -1,5 +1,6 @@
 import React from 'react';
 import { Filter, RotateCcw, Calendar, Tag, MapPin, CreditCard, CheckCircle } from 'lucide-react';
+import { CustomSelect } from '../CustomSelect/CustomSelect';
 
 export const Filters = ({
   filters,
@@ -80,17 +81,15 @@ export const Filters = ({
           <label htmlFor="filter-category" className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1">
             <Tag className="w-3 h-3 text-purple-500" /> Category
           </label>
-          <select
+          <CustomSelect
             id="filter-category"
             value={filters.category}
-            onChange={(e) => handleFilterChange('category', e.target.value)}
-            className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
-          >
-            <option value="ALL">All Categories</option>
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
-            ))}
-          </select>
+            onChange={(val) => handleFilterChange('category', val)}
+            options={[
+              { value: 'ALL', label: 'All Categories' },
+              ...categories.map((cat) => ({ value: cat, label: cat }))
+            ]}
+          />
         </div>
 
         {/* 3. City Filter */}
@@ -98,17 +97,15 @@ export const Filters = ({
           <label htmlFor="filter-city" className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1">
             <MapPin className="w-3 h-3 text-rose-500" /> City
           </label>
-          <select
+          <CustomSelect
             id="filter-city"
             value={filters.city}
-            onChange={(e) => handleFilterChange('city', e.target.value)}
-            className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
-          >
-            <option value="ALL">All Cities</option>
-            {cities.map((city) => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
+            onChange={(val) => handleFilterChange('city', val)}
+            options={[
+              { value: 'ALL', label: 'All Cities' },
+              ...cities.map((city) => ({ value: city, label: city }))
+            ]}
+          />
         </div>
 
         {/* 4. Payment Method Filter */}
@@ -116,17 +113,15 @@ export const Filters = ({
           <label htmlFor="filter-payment" className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1">
             <CreditCard className="w-3 h-3 text-emerald-500" /> Payment Method
           </label>
-          <select
+          <CustomSelect
             id="filter-payment"
             value={filters.paymentMethod}
-            onChange={(e) => handleFilterChange('paymentMethod', e.target.value)}
-            className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
-          >
-            <option value="ALL">All Payment Methods</option>
-            {paymentMethods.map((pm) => (
-              <option key={pm} value={pm}>{pm}</option>
-            ))}
-          </select>
+            onChange={(val) => handleFilterChange('paymentMethod', val)}
+            options={[
+              { value: 'ALL', label: 'All Payment Methods' },
+              ...paymentMethods.map((pm) => ({ value: pm, label: pm }))
+            ]}
+          />
         </div>
 
         {/* 5. Order Status Filter */}
@@ -134,17 +129,15 @@ export const Filters = ({
           <label htmlFor="filter-status" className="block text-[11px] font-bold text-slate-600 dark:text-slate-400 flex items-center gap-1">
             <CheckCircle className="w-3 h-3 text-amber-500" /> Order Status
           </label>
-          <select
+          <CustomSelect
             id="filter-status"
             value={filters.orderStatus}
-            onChange={(e) => handleFilterChange('orderStatus', e.target.value)}
-            className="w-full px-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all"
-          >
-            <option value="ALL">All Statuses</option>
-            {orderStatuses.map((st) => (
-              <option key={st} value={st}>{st}</option>
-            ))}
-          </select>
+            onChange={(val) => handleFilterChange('orderStatus', val)}
+            options={[
+              { value: 'ALL', label: 'All Statuses' },
+              ...orderStatuses.map((st) => ({ value: st, label: st }))
+            ]}
+          />
         </div>
       </div>
     </div>
