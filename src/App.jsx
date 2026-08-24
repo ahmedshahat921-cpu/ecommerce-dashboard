@@ -34,6 +34,12 @@ export function App() {
     setPageSize
   } = useDashboard();
 
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = React.useState(false);
+
+  const toggleMobileSidebar = () => {
+    setIsMobileSidebarOpen((prev) => !prev);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
       {/* Top sticky header */}
@@ -45,6 +51,8 @@ export function App() {
         filteredRecordsCount={filteredData.length}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
+        isMobileSidebarOpen={isMobileSidebarOpen}
+        toggleMobileSidebar={toggleMobileSidebar}
       />
 
       {/* Main Body with Sidebar + Content */}
@@ -54,6 +62,8 @@ export function App() {
           totalRecords={rawDataset.length}
           activeFilterCount={activeFilterCount}
           resetFilters={resetFilters}
+          isMobileSidebarOpen={isMobileSidebarOpen}
+          setIsMobileSidebarOpen={setIsMobileSidebarOpen}
         />
 
         {/* Dashboard Core Content Area */}
