@@ -10,12 +10,14 @@ export const DataTable = ({
 }) => {
   const renderSortIcon = (field) => {
     if (sortField !== field) {
-      return <ArrowUpDown className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />;
+      return (
+        <ArrowUpDown className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 opacity-50 group-hover:opacity-100 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-all shrink-0 ml-1" />
+      );
     }
     return sortOrder === 'asc' ? (
-      <ArrowUp className="w-3.5 h-3.5 text-blue-500 font-bold" />
+      <ArrowUp className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 font-bold shrink-0 ml-1" />
     ) : (
-      <ArrowDown className="w-3.5 h-3.5 text-blue-500 font-bold" />
+      <ArrowDown className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 font-bold shrink-0 ml-1" />
     );
   };
 
@@ -53,20 +55,27 @@ export const DataTable = ({
       {/* Table Wrapper */}
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse min-w-[850px]">
-          <thead>
-            <tr className="bg-slate-50 dark:bg-slate-850/80 border-b border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider text-[10px]">
-              {headers.map((head) => (
-                <th
-                  key={head.key}
-                  onClick={() => handleSort(head.key)}
-                  className="px-4 py-3 cursor-pointer group hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors select-none"
-                >
-                  <div className="flex items-center gap-1.5">
-                    <span>{head.label}</span>
-                    {renderSortIcon(head.key)}
-                  </div>
-                </th>
-              ))}
+          <thead className="bg-slate-100/90 dark:bg-slate-800/90 border-b border-slate-200 dark:border-slate-700/80 transition-colors">
+            <tr className="text-[11px] font-bold tracking-wide uppercase">
+              {headers.map((head) => {
+                const isActive = sortField === head.key;
+                return (
+                  <th
+                    key={head.key}
+                    onClick={() => handleSort(head.key)}
+                    className={`px-4 py-3 cursor-pointer group select-none transition-colors ${
+                      isActive
+                        ? 'bg-blue-50/60 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-extrabold'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 hover:text-slate-900 dark:hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-1">
+                      <span>{head.label}</span>
+                      {renderSortIcon(head.key)}
+                    </div>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 text-slate-800 dark:text-slate-200">
