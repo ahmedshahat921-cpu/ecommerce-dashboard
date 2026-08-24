@@ -70,14 +70,9 @@ export function App() {
         <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 overflow-hidden">
           {/* Section 1: Dynamic KPIs */}
           <div id="overview" className="space-y-2">
-            <div className="flex items-center justify-between">
-              <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
-                Dynamic Executive KPIs
-              </h2>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
-                Calculated live from {filteredData.length} active records
-              </span>
-            </div>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
+              Dynamic Executive KPIs
+            </h2>
             <KPICards kpiMetrics={kpiMetrics} />
           </div>
 

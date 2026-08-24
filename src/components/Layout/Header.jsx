@@ -30,16 +30,9 @@ export const Header = ({
             <BarChart3 className="w-5 h-5" />
           </div>
           <div className="hidden min-[400px]:block">
-            <h1 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight flex items-center gap-1.5">
+            <h1 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight">
               E-Commerce Analytics
-              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-ping"></span>
-                Verified Dataset
-              </span>
             </h1>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 hidden lg:block">
-              Real-time telemetry parsed from <code className="text-blue-600 dark:text-blue-400 font-mono text-[11px]">database.xlsx</code>
-            </p>
           </div>
         </div>
 
