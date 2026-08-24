@@ -7,7 +7,8 @@ export const CustomSelect = ({
   onChange,
   options,
   placeholder = 'Select option...',
-  className = ''
+  className = '',
+  popoverPosition = 'bottom'
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef(null);
@@ -49,6 +50,10 @@ export const CustomSelect = ({
     setIsOpen(false);
   };
 
+  const positionClasses = popoverPosition === 'top'
+    ? 'bottom-full mb-1.5'
+    : 'top-full mt-1.5';
+
   return (
     <div ref={containerRef} className={`relative w-full ${className}`}>
       {/* Trigger Button */}
@@ -72,7 +77,7 @@ export const CustomSelect = ({
       {isOpen && (
         <div
           role="listbox"
-          className="absolute z-50 left-0 right-0 mt-1.5 max-h-60 overflow-y-auto rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl ring-1 ring-black/5 dark:ring-white/10 p-1 space-y-0.5 animate-in fade-in-50 zoom-in-95 duration-100"
+          className={`absolute z-50 left-0 right-0 ${positionClasses} max-h-60 overflow-y-auto rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl ring-1 ring-black/5 dark:ring-white/10 p-1 space-y-0.5 animate-in fade-in-50 zoom-in-95 duration-100`}
         >
           {formattedOptions.map((opt) => {
             const isSelected = String(opt.value) === String(value);
