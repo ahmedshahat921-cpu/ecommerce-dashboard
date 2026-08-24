@@ -48,7 +48,7 @@ export function App() {
       />
 
       {/* Main Body with Sidebar + Content */}
-      <div className="flex-1 flex max-w-7xl w-full mx-auto">
+      <div className="flex-1 flex w-full">
         {/* Navigation Sidebar */}
         <Sidebar
           totalRecords={rawDataset.length}
