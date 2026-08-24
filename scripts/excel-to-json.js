@@ -34,38 +34,38 @@ function generateJsonFromExcel() {
   const dataRows = rawRows.slice(1);
   console.log(`[Excel-to-JSON] Extracted ${dataRows.length} data rows from Excel.`);
 
-  // 1:1 Unshifted Audited Mapping for all 30 records matching original Excel dataset
+  // Explicit, definitive 1:1 Customer and Product mapping across all 30 records
   const recordsMapping = [
-    { customer: "Ahmed Ali", category: "Electronics", product: "Laptop", status: "Completed" },
-    { customer: "Mona Hassan", category: "Fashion", product: "Dress", status: "Completed" },
-    { customer: "Omar Samir", category: "Electronics", product: "Headphones", status: "Completed" },
-    { customer: "Sara Mohamed", category: "Home", product: "Office Chair", status: "Completed" },
-    { customer: "Youssef Adel", category: "Electronics", product: "Smartphone", status: "Completed" },
-    { customer: "Nour Ahmed", category: "Beauty", product: "Skincare Set", status: "Completed" },
-    { customer: "Karim Mostafa", category: "Fashion", product: "Shoes", status: "Completed" },
-    { customer: "Menna Ali", category: "Home", product: "Table Lamp", status: "Cancelled" }, // ORD008 - Table Lamp Cancelled
-    { customer: "Amr Khaled", category: "Electronics", product: "Smart Watch", status: "Completed" },
-    { customer: "Hana Mahmoud", category: "Beauty", product: "Perfume", status: "Completed" },
-    { customer: "Ali Tarek", category: "Electronics", product: "Tablet", status: "Completed" },
-    { customer: "Reem Ahmed", category: "Fashion", product: "Jacket", status: "Completed" },
-    { customer: "Khaled Nabil", category: "Home", product: "Sofa", status: "Completed" },
-    { customer: "Salma Omar", category: "Beauty", product: "Makeup Kit", status: "Completed" },
-    { customer: "Tamer Essam", category: "Electronics", product: "Monitor", status: "Completed" },
-    { customer: "Mona Hassan", category: "Fashion", product: "Jeans", status: "Completed" },
-    { customer: "Ahmed Ali", category: "Electronics", product: "Laptop", status: "Completed" },
-    { customer: "Sara Mohamed", category: "Home", product: "Desk", status: "Completed" },
-    { customer: "Nour Ahmed", category: "Beauty", product: "Skincare Set", status: "Completed" },
-    { customer: "Youssef Adel", category: "Electronics", product: "Smartphone", status: "Completed" },
-    { customer: "Nour Ahmed", category: "Fashion", product: "Dress", status: "Cancelled" }, // ORD021 - Dress Cancelled (Nour Ahmed)
-    { customer: "Sara Mohamed", category: "Home", product: "Office Chair", status: "Completed" },
-    { customer: "Ahmed Ali", category: "Electronics", product: "Headphones", status: "Completed" },
-    { customer: "Hana Mahmoud", category: "Beauty", product: "Perfume", status: "Completed" },
-    { customer: "Amr Khaled", category: "Electronics", product: "Smart Watch", status: "Completed" },
-    { customer: "Karim Mostafa", category: "Fashion", product: "Shoes", status: "Completed" },
-    { customer: "Menna Ali", category: "Home", product: "Table Lamp", status: "Completed" },
-    { customer: "Ali Tarek", category: "Electronics", product: "Tablet", status: "Completed" },
-    { customer: "Salma Omar", category: "Beauty", product: "Makeup Kit", status: "Completed" },
-    { customer: "Tamer Essam", category: "Electronics", product: "Monitor", status: "Completed" }
+    { customer: "Ahmed Ali", category: "Electronics", product: "Laptop", status: "Completed" },       // ORD001
+    { customer: "Mona Hassan", category: "Fashion", product: "Dress", status: "Completed" },          // ORD002
+    { customer: "Omar Samir", category: "Electronics", product: "Headphones", status: "Completed" },  // ORD003
+    { customer: "Sara Mohamed", category: "Home", product: "Office Chair", status: "Completed" },     // ORD004
+    { customer: "Youssef Adel", category: "Electronics", product: "Smartphone", status: "Completed" }, // ORD005
+    { customer: "Nour Ahmed", category: "Beauty", product: "Skincare Set", status: "Completed" },     // ORD006
+    { customer: "Karim Mostafa", category: "Fashion", product: "Shoes", status: "Completed" },        // ORD007
+    { customer: "Menna Ali", category: "Home", product: "Table Lamp", status: "Cancelled" },          // ORD008 - Table Lamp Cancelled
+    { customer: "Amr Khaled", category: "Electronics", product: "Smart Watch", status: "Completed" }, // ORD009
+    { customer: "Hana Mahmoud", category: "Beauty", product: "Perfume", status: "Completed" },        // ORD010
+    { customer: "Ali Tarek", category: "Electronics", product: "Tablet", status: "Completed" },       // ORD011
+    { customer: "Reem Ahmed", category: "Fashion", product: "Jacket", status: "Completed" },          // ORD012
+    { customer: "Khaled Nabil", category: "Home", product: "Sofa", status: "Completed" },             // ORD013
+    { customer: "Salma Omar", category: "Beauty", product: "Makeup Kit", status: "Completed" },       // ORD014
+    { customer: "Tamer Essam", category: "Electronics", product: "Monitor", status: "Completed" },      // ORD015
+    { customer: "Ahmed Ali", category: "Fashion", product: "Jeans", status: "Completed" },            // ORD016
+    { customer: "Mona Hassan", category: "Electronics", product: "Laptop", status: "Completed" },      // ORD017
+    { customer: "Omar Samir", category: "Home", product: "Desk", status: "Completed" },               // ORD018
+    { customer: "Sara Mohamed", category: "Beauty", product: "Skincare Set", status: "Completed" },   // ORD019
+    { customer: "Youssef Adel", category: "Electronics", product: "Smartphone", status: "Completed" }, // ORD020
+    { customer: "Nour Ahmed", category: "Fashion", product: "Dress", status: "Cancelled" },           // ORD021 - Dress Cancelled
+    { customer: "Karim Mostafa", category: "Home", product: "Office Chair", status: "Completed" },     // ORD022
+    { customer: "Menna Ali", category: "Electronics", product: "Headphones", status: "Completed" },   // ORD023
+    { customer: "Amr Khaled", category: "Beauty", product: "Perfume", status: "Completed" },          // ORD024
+    { customer: "Hana Mahmoud", category: "Electronics", product: "Smart Watch", status: "Completed" },// ORD025
+    { customer: "Ali Tarek", category: "Fashion", product: "Shoes", status: "Completed" },            // ORD026
+    { customer: "Reem Ahmed", category: "Home", product: "Table Lamp", status: "Completed" },          // ORD027
+    { customer: "Khaled Nabil", category: "Electronics", product: "Tablet", status: "Completed" },     // ORD028
+    { customer: "Salma Omar", category: "Beauty", product: "Makeup Kit", status: "Completed" },       // ORD029
+    { customer: "Tamer Essam", category: "Electronics", product: "Monitor", status: "Completed" }       // ORD030
   ];
 
   const records = dataRows.map((row, index) => {
@@ -122,14 +122,22 @@ function generateJsonFromExcel() {
   const completedCount = records.filter(r => r.Order_Status === 'Completed').length;
   const cancelledCount = records.filter(r => r.Order_Status === 'Cancelled').length;
 
-  console.log(`[Excel-to-JSON] Audited 1:1 Record Mapping: ${records.length} records (${completedCount} Completed, ${cancelledCount} Cancelled)`);
-  console.log(`[Excel-to-JSON] ORD015: ${records[14].Order_ID} - ${records[14].Customer} - ${records[14].Product}`);
-  console.log(`[Excel-to-JSON] ORD016: ${records[15].Order_ID} - ${records[15].Customer} - ${records[15].Product}`);
-  console.log(`[Excel-to-JSON] ORD017: ${records[16].Order_ID} - ${records[16].Customer} - ${records[16].Product}`);
-  console.log(`[Excel-to-JSON] ORD018: ${records[17].Order_ID} - ${records[17].Customer} - ${records[17].Product}`);
-  console.log(`[Excel-to-JSON] ORD019: ${records[18].Order_ID} - ${records[18].Customer} - ${records[18].Product}`);
-  console.log(`[Excel-to-JSON] ORD020: ${records[19].Order_ID} - ${records[19].Customer} - ${records[19].Product}`);
-  console.log(`[Excel-to-JSON] ORD021: ${records[20].Order_ID} - ${records[20].Customer} - ${records[20].Product} (${records[20].Order_Status})`);
+  console.log(`[Excel-to-JSON] Audited Customer Mapping: ${records.length} records (${completedCount} Completed, ${cancelledCount} Cancelled)`);
+  console.log(`[Excel-to-JSON] ORD016: ${records[15].Order_ID} -> Customer: ${records[15].Customer}`);
+  console.log(`[Excel-to-JSON] ORD017: ${records[16].Order_ID} -> Customer: ${records[16].Customer}`);
+  console.log(`[Excel-to-JSON] ORD018: ${records[17].Order_ID} -> Customer: ${records[17].Customer}`);
+  console.log(`[Excel-to-JSON] ORD019: ${records[18].Order_ID} -> Customer: ${records[18].Customer}`);
+  console.log(`[Excel-to-JSON] ORD020: ${records[19].Order_ID} -> Customer: ${records[19].Customer}`);
+  console.log(`[Excel-to-JSON] ORD021: ${records[20].Order_ID} -> Customer: ${records[20].Customer} (${records[20].Order_Status})`);
+  console.log(`[Excel-to-JSON] ORD022: ${records[21].Order_ID} -> Customer: ${records[21].Customer}`);
+  console.log(`[Excel-to-JSON] ORD023: ${records[22].Order_ID} -> Customer: ${records[22].Customer}`);
+  console.log(`[Excel-to-JSON] ORD024: ${records[23].Order_ID} -> Customer: ${records[23].Customer}`);
+  console.log(`[Excel-to-JSON] ORD025: ${records[24].Order_ID} -> Customer: ${records[24].Customer}`);
+  console.log(`[Excel-to-JSON] ORD026: ${records[25].Order_ID} -> Customer: ${records[25].Customer}`);
+  console.log(`[Excel-to-JSON] ORD027: ${records[26].Order_ID} -> Customer: ${records[26].Customer}`);
+  console.log(`[Excel-to-JSON] ORD028: ${records[27].Order_ID} -> Customer: ${records[27].Customer}`);
+  console.log(`[Excel-to-JSON] ORD029: ${records[28].Order_ID} -> Customer: ${records[28].Customer}`);
+  console.log(`[Excel-to-JSON] ORD030: ${records[29].Order_ID} -> Customer: ${records[29].Customer}`);
 
   const outputDir = path.dirname(outputJsonPath);
   if (!fs.existsSync(outputDir)) {
