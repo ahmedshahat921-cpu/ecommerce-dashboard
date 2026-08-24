@@ -12,6 +12,39 @@ import {
 } from 'lucide-react';
 
 export const Sidebar = ({ totalRecords, activeFilterCount, resetFilters }) => {
+  const [activeTab, setActiveTab] = React.useState('overview');
+
+  const navItems = [
+    {
+      id: 'overview',
+      label: 'Dashboard Overview',
+      href: '#overview',
+      icon: LayoutDashboard,
+      iconColor: 'text-blue-500'
+    },
+    {
+      id: 'kpis',
+      label: 'Dynamic KPIs',
+      href: '#overview',
+      icon: TrendingUp,
+      iconColor: 'text-emerald-500'
+    },
+    {
+      id: 'charts',
+      label: 'Analytical Charts',
+      href: '#charts',
+      icon: PieChart,
+      iconColor: 'text-purple-500'
+    },
+    {
+      id: 'table',
+      label: 'Orders Dataset Table',
+      href: '#table',
+      icon: Table,
+      iconColor: 'text-amber-500'
+    }
+  ];
+
   return (
     <aside className="w-64 shrink-0 hidden md:block border-r border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 p-4 transition-colors min-h-[calc(100vh-4rem)]">
       <div className="space-y-6 sticky top-20">
@@ -21,34 +54,25 @@ export const Sidebar = ({ totalRecords, activeFilterCount, resetFilters }) => {
             Analytics Views
           </h3>
           <nav className="space-y-1">
-            <a
-              href="#overview"
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 border border-blue-100 dark:border-blue-900/50 transition-all"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              <span>Dashboard Overview</span>
-            </a>
-            <a
-              href="#kpis"
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all"
-            >
-              <TrendingUp className="w-4 h-4 text-emerald-500" />
-              <span>Dynamic KPIs</span>
-            </a>
-            <a
-              href="#charts"
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all"
-            >
-              <PieChart className="w-4 h-4 text-purple-500" />
-              <span>Analytical Charts</span>
-            </a>
-            <a
-              href="#table"
-              className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all"
-            >
-              <Table className="w-4 h-4 text-amber-500" />
-              <span>Orders Dataset Table</span>
-            </a>
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeTab === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={() => setActiveTab(item.id)}
+                  className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs transition-all ${
+                    isActive
+                      ? 'font-bold text-blue-600 dark:text-blue-400 bg-blue-50/90 dark:bg-blue-950/70 border border-blue-200/90 dark:border-blue-800/90 shadow-sm shadow-blue-500/10 ring-1 ring-blue-500/30'
+                      : 'font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 border border-transparent'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-blue-500' : item.iconColor}`} />
+                  <span>{item.label}</span>
+                </a>
+              );
+            })}
           </nav>
         </div>
 
