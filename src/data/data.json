@@ -28,7 +28,7 @@
   {
     "Order_ID": "ORD003",
     "Order_Date": "2026-01-05",
-    "Customer": "Ahmed Ali",
+    "Customer": "Omar Samir",
     "Category": "Electronics",
     "Product": "Headphones",
     "Quantity": 3,
@@ -236,7 +236,7 @@
   {
     "Order_ID": "ORD019",
     "Order_Date": "2026-02-07",
-    "Customer": "Nour Ahmed",
+    "Customer": "Karim Mostafa",
     "Category": "Beauty",
     "Product": "Skincare Set",
     "Quantity": 2,
@@ -262,7 +262,7 @@
   {
     "Order_ID": "ORD021",
     "Order_Date": "2026-02-11",
-    "Customer": "Mona Hassan",
+    "Customer": "Nour Ahmed",
     "Category": "Fashion",
     "Product": "Dress",
     "Quantity": 1,
