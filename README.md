@@ -160,6 +160,7 @@ npm run preview
 
 ## GitHub & Vercel Deployment
 
+- **Live Production Dashboard**: [https://ecommerce1-dashboard.vercel.app](https://ecommerce1-dashboard.vercel.app)
 - **GitHub Repository**: [https://github.com/ahmedshahat921-cpu/ecommerce-dashboard.git](https://github.com/ahmedshahat921-cpu/ecommerce-dashboard.git)
 - **Deployment Platform**: Vercel
 - **Production Routing**: Configured via `vercel.json` for single page app (SPA) routing.
