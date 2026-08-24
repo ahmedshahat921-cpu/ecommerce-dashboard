@@ -204,7 +204,7 @@
     "Unit_Price": 1000,
     "Total_Sales": 3000,
     "Payment_Method": "Cash",
-    "Order_Status": "Completed",
+    "Order_Status": "Cancelled",
     "City": "Cairo"
   },
   {
@@ -269,7 +269,7 @@
     "Unit_Price": 1200,
     "Total_Sales": 1200,
     "Payment_Method": "Wallet",
-    "Order_Status": "Completed",
+    "Order_Status": "Cancelled",
     "City": "Giza"
   },
   {

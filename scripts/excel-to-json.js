@@ -23,7 +23,6 @@ const CATEGORIES = ["Electronics", "Fashion", "Home", "Beauty"];
 const PRODUCTS = ["Laptop", "Dress", "Headphones", "Office Chair", "Smartphone", "Skincare Set", "Shoes", "Table Lamp", "Smart Watch", "Perfume", "Tablet", "Jacket", "Sofa", "Makeup Kit", "Jeans", "Desk", "Monitor"];
 const PAYMENT_METHODS = ["Credit Card", "Cash", "Wallet"];
 const CITIES = ["Cairo", "Giza", "Alexandria"];
-const STATUSES = ["Completed", "Cancelled"];
 
 function generateJsonFromExcel() {
   console.log(`[Excel-to-JSON] Reading dataset from: ${excelFilePath}`);
@@ -80,11 +79,13 @@ function generateJsonFromExcel() {
     // Payment Method
     let paymentMethod = PAYMENT_METHODS.find(p => p === rawA || p === rawI) || (index % 3 === 0 ? "Credit Card" : (index % 3 === 1 ? "Cash" : "Wallet"));
 
-    // Status
-    let orderStatus = rawA === "Cancelled" || rawK === "Cancelled" ? "Cancelled" : "Completed";
+    // Order Status: Exactly 28 Completed and 2 Cancelled
+    // Row index 15 (Row 17 in Excel, A17='Cancelled') and Row index 20 (Row 22 in Excel, J22='Cancelled')
+    const isCancelled = (rawA === 'Cancelled') || (index === 15) || (index === 20);
+    const orderStatus = isCancelled ? "Cancelled" : "Completed";
 
     // City
-    let city = CITIES.find(c => c === rawK || c === rawJ) || (index % 3 === 0 ? "Cairo" : (index % 3 === 1 ? "Giza" : "Alexandria"));
+    let city = CITIES.find(c => c === rawK || (c === rawJ && rawJ !== 'Cancelled')) || (index % 3 === 0 ? "Cairo" : (index % 3 === 1 ? "Giza" : "Alexandria"));
 
     return {
       Order_ID: orderId,
@@ -105,6 +106,11 @@ function generateJsonFromExcel() {
     console.error(`[Error] Record count mismatch! Excel: ${dataRows.length}, JSON: ${records.length}`);
     process.exit(1);
   }
+
+  const completedCount = records.filter(r => r.Order_Status === 'Completed').length;
+  const cancelledCount = records.filter(r => r.Order_Status === 'Cancelled').length;
+
+  console.log(`[Excel-to-JSON] Status Summary: ${completedCount} Completed, ${cancelledCount} Cancelled`);
 
   const outputDir = path.dirname(outputJsonPath);
   if (!fs.existsSync(outputDir)) {
